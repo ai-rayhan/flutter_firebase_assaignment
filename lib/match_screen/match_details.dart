@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class MatchDetailsScreen extends StatelessWidget {
   final QueryDocumentSnapshot match;
 
-  const MatchDetailsScreen({required this.match});
+  const MatchDetailsScreen({super.key, required this.match});
 
   @override
   Widget build(BuildContext context) {
@@ -12,23 +12,26 @@ class MatchDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Match Details'),
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Card(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 50),
-              child: Column(
-                children: [
-                  Text('${match['team1']} vs ${match['team2']}'),
-                  Text('${match['score_team1']} : ${match['score_team2']}'),
-                  Text('Total time: ${match['total_time']}'),
-                ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50),
+                child: Column(
+                  children: [
+                    Text('${match['team1']} vs ${match['team2']}'),
+                    Text('${match['score_team1']} : ${match['score_team2']}'),
+                    Text('Time: ${match['time']}'),
+                    Text('Total time: ${match['total_time']}'),
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

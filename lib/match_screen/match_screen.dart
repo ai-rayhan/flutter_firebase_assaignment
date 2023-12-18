@@ -23,25 +23,28 @@ class MatchListScreen extends StatelessWidget {
           }
           var matches = snapshot.data!.docs;
 
-          return ListView.builder(
-            itemCount: matches.length,
-            itemBuilder: (context, index) {
-              var match = matches[index];
-              return Card(
-                child: ListTile(
-                  title: Text('${match['team1']} vs ${match['team2']}'),
-                  trailing: const Icon(Icons.arrow_circle_right_outlined),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MatchDetailsScreen(match: match),
-                      ),
-                    );
-                  },
-                ),
-              );
-            },
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView.builder(
+              itemCount: matches.length,
+              itemBuilder: (context, index) {
+                var match = matches[index];
+                return Card(
+                  child: ListTile(
+                    title: Text('${match['team1']} vs ${match['team2']}'),
+                    trailing: const Icon(Icons.arrow_circle_right_outlined),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MatchDetailsScreen(match: match),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
           );
         },
       ),
